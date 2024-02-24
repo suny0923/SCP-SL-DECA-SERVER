@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="LS style.css">
+    <title>SCP SLㅣDECA</title>
+</head>
+<body>
+ <div class="wrapper">
+    <nav class="nav">
+        <div class="nav-logo">
+            <p>DECA</p>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="home.html" class="link">Home</a></li>
+                <li><a href="#" class="link">Info</a></li>
+                <li><a href="#" class="link">Update Log</a></li>
+                <li><a href="#" class="link">Seson Pass</a></li>
+            </ul>
+        </div>
+        <div class="nav-button">
+            <button class="btn white-btn" id="loginBtn" onclick="login()"><b>Sign In</b></button>
+            <button class="btn" id="registerBtn" onclick="register()"><b>Sign Up</b></button>
+        </div>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+    </nav>
+<!----------------------------- Form box ----------------------------------->    
+<div class="form-box">
+    <!------------------- login form -------------------------->
+    <div class="login-container" id="login">
+        <div class="top">
+            <span>계정이 없습니까? <a href="#" onclick="register()">가입</a></span>
+            <header>Login</header>
+        </div>
+        <div class="input-box">
+            <input type="text" class="input-field" placeholder="아이디">
+            <i class="bx bx-user"></i>
+        </div>
+        <div class="input-box">
+            <input type="password" class="input-field" placeholder="비밀번호">
+            <i class="bx bx-lock-alt"></i>
+        </div>
+        <div class="input-box">
+            <input type="submit" class="submit" value="로그인">
+        </div>
+        <div class="two-col">
+            <div class="one">
+                <input type="checkbox" id="login-check">
+                <label for="login-check"> 아이디를 기억합니까?</label>
+            </div>
+            <div class="two">
+                <label><a href="#">비밀번호를 잊어버렸습니까?</a></label>
+            </div>
+        </div>
+    </div>
+    <!------------------- registration form -------------------------->
+    <div class="register-container" id="register">
+        <div class="top">
+            <span>계정이 있습니까? <a href="#" onclick="login()">로그인</a></span>
+            <header>Sign Up</header>
+        </div>
+        <div class="input-box">
+            <input type="text" class="input-field" placeholder="아이디">
+            <i class="bx bx-user"></i>
+        <div class="input-box">
+            <input type="text" class="input-field" placeholder="이메일">
+            <i class="bx bx-envelope"></i>
+        </div>
+        <div class="input-box">
+            <input type="password" class="input-field" placeholder="비밀번호">
+            <i class="bx bx-lock-alt"></i>
+        </div>
+        <!-- 제출 버튼 -->
+        <div class="input-box">
+            <button id="submit" class="submit" onclick="submitForm()">회원가입</button>
+        </div>
+        <!-- 이용약관 링크 -->
+        <div class="two-col">
+            <div class="two">
+                <label><a href="terms.html" target="_blank">이용 약관</a></label>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div> 
+
+<script>
+    function myMenuFunction() {
+     var i = document.getElementById("navMenu");
+     if(i.className === "nav-menu") {
+         i.className += " responsive";
+     } else {
+         i.className = "nav-menu";
+     }
+    }
+    var a = document.getElementById("loginBtn");
+    var b = document.getElementById("registerBtn");
+    var x = document.getElementById("login");
+    var y = document.getElementById("register");
+    function login() {
+        x.style.left = "4px";
+        y.style.right = "-520px";
+        a.className += " white-btn";
+        b.className = "btn";
+        x.style.opacity = 1;
+        y.style.opacity = 0;
+    }
+    function register() {
+        x.style.left = "-510px";
+        y.style.right = "5px";
+        a.className = "btn";
+        b.className += " white-btn";
+        x.style.opacity = 0;
+        y.style.opacity = 1;
+    }
+        // 회원가입 버튼 클릭 이벤트에 연결된 함수
+        function submitForm() {
+            var termsAccepted = localStorage.getItem('termsAccepted') === 'true';
+
+            if (!termsAccepted) {
+                alert('이용 약관에 동의해주세요.');
+            } else {
+                alert('회원가입이 완료되었습니다.');
+                localStorage.removeItem('termsAccepted');
+                // 회원가입 성공 로직 구현
+            }
+        }
+
+</script>
+</body>
+</html>
